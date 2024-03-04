@@ -1,0 +1,48 @@
+﻿@using OOP_Project.Entity
+@model List<Customer>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_CoreLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Müşteri Listesi</h2>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Müşteri İsmi</th>
+                    <th>Müşteri Şehri</th>
+                  
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tbody>
+                    <tr>
+                        <td>@item.CustomerName</td>                        
+                        <td>@item.CustomerCity</td>
+                        <td><a href="/Customer/DeleteCustomer/@item.CustomerID" class="btn btn-warning">Ürün Sil</a></td>
+                        <td><a href="/Customer/UpdateCustomer/@item.CustomerID" class="btn btn-primary">Ürün Düzenle</a></td>
+                    </tr>
+                </tbody>
+            }
+        </table>
+        <a href="/Customer/AddCustomer/" class="btn btn-primary">Yeni Müşteri Ekle</a>
+    </div>
+
+</body>
+</html>
+
